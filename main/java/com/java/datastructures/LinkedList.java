@@ -85,6 +85,28 @@ public class LinkedList<E> {
 		tail = previousNode;
 		return key;	
 	}
+	/**
+	 * Usecase 7
+	 * Function searches for an item in list
+	 * @param item
+	 * @return
+	 */
+	public boolean search(E item) {
+		boolean isPresent = false;
+		INode<E> tempNode = head;
+		while(tempNode.getNext() != null) {
+			if(tempNode.getKey().equals(item)) {
+				isPresent = true;
+			}
+			else {
+				tempNode = tempNode.getNext();
+			}	
+		}
+		if(tail.getKey().equals(item)) {
+			isPresent = true;
+		}
+		return isPresent;	
+	}
 	public void printNodes() {
 		INode<E> tempNode = head;
 		while(tempNode.getNext() != null) {
