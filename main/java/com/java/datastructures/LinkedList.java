@@ -107,6 +107,12 @@ public class LinkedList<E> {
 		}
 		return isPresent;	
 	}
+	/**
+	 * Usecase 9
+	 * Function returns index of specific element
+	 * @param item
+	 * @return
+	 */
 	public int index(E item) {
 		int index = 0;
 		int count = 0;
@@ -135,6 +141,51 @@ public class LinkedList<E> {
 		}	
 		System.out.print(tempNode.getKey());
 	}
+	public boolean isEmpty() {
+		boolean empty = false;
+		if(head == null ) {
+			empty = true;
+		}
+		return empty;
+	}
+	public void remove(INode<E> node) {
+		boolean removed = false;
+		INode<E> currentNode = head.getNext();
+		INode<E> previousNode = head;
+		if(head.equals(node) && head != null) {
+			this.pop();
+		}
+		else if(tail.equals(node)) {
+			this.popLast();	
+		}
+		else {
+			do {
+				if(currentNode.getKey().equals(node.getKey())) {
+					previousNode.setNext(currentNode.getNext());
+					removed = true;
+				}
+				previousNode = currentNode;
+				currentNode = currentNode.getNext();
+			}while(!removed);
+		}
+	}
+	/**
+	 * Usecase 9
+	 * Function returns the size of list
+	 * @return
+	 */
+	public int size() {
+		int count = 0;
+		INode<E> node = head;
+		while(node.getNext() != null) {
+			count++;
+			node = node.getNext();
+		}
+		if(node.equals(tail)) {
+			count++;
+		}
+		return count;
+	}
 	public static void main(String[] args)
 	{
 		LinkedList<Integer> list = new LinkedList<Integer>();
@@ -146,6 +197,7 @@ public class LinkedList<E> {
 		list.append(thirdNode);
 		list.insert(1, secondNode);
 		list.insert(list.index(secondNode.getKey())+1, fourthNode);
+		list.remove(fourthNode);
 		list.printNodes();
 	}
 }
