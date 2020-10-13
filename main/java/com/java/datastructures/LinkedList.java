@@ -67,6 +67,24 @@ public class LinkedList<E> {
 		head = tempNode;
 		return key;
 	}
+	/**
+	 * Usecase 6
+	 * Function pops the last element in the list
+	 * @return
+	 */
+	public E popLast() {
+		INode<E> currentNode = head;
+		INode<E> previousNode = null;
+		while(currentNode.getNext() != null) {
+			previousNode = currentNode;
+			currentNode = currentNode.getNext();	
+		}
+		E key = currentNode.getKey();
+		currentNode = null;
+		previousNode.setNext(null);
+		tail = previousNode;
+		return key;	
+	}
 	public void printNodes() {
 		INode<E> tempNode = head;
 		while(tempNode.getNext() != null) {
@@ -84,7 +102,7 @@ public class LinkedList<E> {
 		list.append(firstNode);
 		list.append(thirdNode);
 		list.insert(1, secondNode);
-		list.pop();
+		list.popLast();
 		list.printNodes();
 	}
 }
