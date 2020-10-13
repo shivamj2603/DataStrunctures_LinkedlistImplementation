@@ -23,6 +23,22 @@ public class LinkedList<E> {
 			head.setNext(tempNode);	
 		}
 	}
+	/**
+	 * Usecase 3
+	 * Function appends elements to the head(tail changes)
+	 * @param node
+	 */
+	public void append(INode<E> node) {
+		if(head == null) {
+			head = node;
+			tail = node;
+		}
+		else {
+			INode<E> tempNode = tail;
+			tempNode.setNext(node);
+			tail = node;
+		}
+	}
 	public void printNodes() {
 		INode<E> tempNode = head;
 		while(tempNode.getNext() != null) {
@@ -37,9 +53,9 @@ public class LinkedList<E> {
 		MyNode<Integer> firstNode = new MyNode<Integer>(56);
 		MyNode<Integer> secondNode = new MyNode<Integer>(30);
 		MyNode<Integer> thirdNode = new MyNode<Integer>(70);
-		list.add(thirdNode);
-		list.add(secondNode);
-		list.add(firstNode);
+		list.append(firstNode);
+		list.append(secondNode);
+		list.append(thirdNode);
 		list.printNodes();
 	}
 }
