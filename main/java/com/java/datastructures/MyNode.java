@@ -1,6 +1,6 @@
 package com.java.datastructures;
 
-public class MyNode<E> implements INode<E> {
+public class MyNode<E extends Comparable<E>> implements INode<E> {
 	public E key ;
 	public MyNode<E> next;
 	public MyNode(E key) {

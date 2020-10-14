@@ -1,6 +1,6 @@
 package com.java.datastructures;
 
-public interface INode<E>{
+public interface INode<E extends Comparable<E>>{
 	E getKey();
 	void setKey(E key);
 	INode<E> getNext();

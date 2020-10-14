@@ -1,6 +1,6 @@
 package com.java.datastructures;
 
-public class LinkedList<E> {
+public class LinkedList<E extends Comparable<E>> {
 	public INode<E> head;
 	public INode<E> tail;
 	public LinkedList() {
